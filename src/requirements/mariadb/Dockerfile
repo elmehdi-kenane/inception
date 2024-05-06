@@ -1,17 +1,18 @@
 FROM debian:bullseye
 
+ENV SQL_DATABASE=maria
+ENV SQL_USER=aa
+ENV SQL_PASSWORD=aa
+ENV SQL_ROOT_PASSWORD=123
+
 RUN apt update -y && \
     apt upgrade -y && \
     apt install mariadb-server -y
 
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 
-RUN mkdir /run/mysqld/
+COPY tools/script.sh ./script.sh
 
-RUN rm -rf /run/mysqld/*
+RUN chmod +x script.sh
 
-RUN chown -R mysql:root /var/run/mysqld
-
-
-# CMD ["exec", "mysqld-safe"]
-CMD ["mysqld", "--user=root", "--console"]
+CMD ["bash", "script.sh"]
