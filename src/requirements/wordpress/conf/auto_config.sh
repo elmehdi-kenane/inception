@@ -9,7 +9,7 @@ wp core download --allow-root
 sed -i '23 s/database_name_here/maria/' /var/www/html/wp-config-sample.php
 sed -i '26 s/username_here/aa/' /var/www/html/wp-config-sample.php
 sed -i '29 s/password_here/aa/' /var/www/html/wp-config-sample.php
-sed -i '32 s/localhost/maria:3306/' /var/www/html/wp-config-sample.php
+sed -i '32 s/localhost/db-service:3306/' /var/www/html/wp-config-sample.php
 sed -i '82 s/false/true/' /var/www/html/wp-config-sample.php
 mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 # Create directory for sock-file
