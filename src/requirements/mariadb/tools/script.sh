@@ -2,8 +2,6 @@
 
 service mariadb start
 
-# mysqld
-
 sleep 5
 
 mysql -e "CREATE DATABASE IF NOT EXISTS maria;"
