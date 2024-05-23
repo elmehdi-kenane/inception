@@ -1,12 +1,13 @@
 #!/bin/bash
 
-service mariadb start
+# service mariadb start
 
-sleep 5
+# sleep 10
+exec mysqld_safe
 
 mysql -e "CREATE DATABASE IF NOT EXISTS maria;"
 
-mysql -e "CREATE USER IF NOT EXISTS 'aa'@'%' IDENTIFIED BY 'aa';"
+mysql -e "CREATE USER IF NOT EXISTS 'a1a'@'%' IDENTIFIED BY 'aa';"
 
 # next line should be modifie to give privileges only to the maria database
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'aa'@'%';"

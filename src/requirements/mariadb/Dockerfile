@@ -1,9 +1,9 @@
 FROM debian:bullseye
 
-ENV SQL_DATABASE=maria
-ENV SQL_USER=aa
-ENV SQL_PASSWORD=aa
-ENV SQL_ROOT_PASSWORD=123
+# ENV SQL_DATABASE=maria
+# ENV SQL_USER=aa
+# ENV SQL_PASSWORD=aa
+# ENV SQL_ROOT_PASSWORD=123
 
 RUN apt update -y && \
     apt upgrade -y && \
