@@ -10,16 +10,16 @@ if [ ! -f "wp-config.php" ]; then
     mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 fi
 
-# wp config set DB_NAME maria --allow-root --path='/var/www/html'
-# wp config set DB_USER aa --allow-root --path='/var/www/html'
-# wp config set DB_PASSWORD aa --allow-root --path='/var/www/html'
-# wp config set DB_HOST db-service:3306 --allow-root --path='/var/www/html'
+wp config set DB_NAME maria --allow-root --path='/var/www/html'
+wp config set DB_USER aa --allow-root --path='/var/www/html'
+wp config set DB_PASSWORD aa --allow-root --path='/var/www/html'
+wp config set DB_HOST mariadb --allow-root --path='/var/www/html'
 # wp config set WP_DEBUG true --allow-root --path='/var/www/html'
 
-sed -i '23 s/database_name_here/maria/' /var/www/html/wp-config.php
-sed -i '26 s/username_here/aa/' /var/www/html/wp-config.php
-sed -i '29 s/password_here/aa/' /var/www/html/wp-config.php
-sed -i '32 s/localhost/maria:3306/' /var/www/html/wp-config.php
+# sed -i '23 s/database_name_here/maria/' /var/www/html/wp-config.php
+# sed -i '26 s/username_here/aa/' /var/www/html/wp-config.php
+# sed -i '29 s/password_here/aa/' /var/www/html/wp-config.php
+# sed -i '32 s/localhost/maria:3306/' /var/www/html/wp-config.php
 # sed -i '82 s/false/true/' /var/www/html/wp-config.php
 
 # Create directory for sock-file
