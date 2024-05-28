@@ -26,7 +26,8 @@ then
 	echo "++++++++++++++++++++ mysql/mysql Directory exists ++++++++++++++++++++"
 else
 	echo "-------------------- mysql/mysql Directory does not exists --------------------"
-    # mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    sleep 5
 fi
 
 until mysqladmin ping --silent; do
@@ -36,16 +37,16 @@ done
 
 echo "============== MariaDB is up and running. =============="
 
-mysql -u root "CREATE DATABASE IF NOT EXISTS maria;"
+mysql -e "CREATE DATABASE IF NOT EXISTS maria;"
 
-mysql -u root "CREATE USER IF NOT EXISTS 'aa'@'%' IDENTIFIED BY 'aa';"
+mysql -e "CREATE USER IF NOT EXISTS 'aa'@'%' IDENTIFIED BY 'aa';"
 
-mysql -u root "GRANT ALL PRIVILEGES ON *.* TO 'aa'@'%';"
-
-mysql -u root "FLUSH PRIVILEGES;"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'aa'@'%';"
 
 mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '123';"
 
+mysql -e "FLUSH PRIVILEGES;"
+
 mysqladmin -u root -p"123" shutdown
 
-mysqld_safe
+exec mysqld_safe

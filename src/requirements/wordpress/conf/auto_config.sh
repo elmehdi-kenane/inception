@@ -13,7 +13,7 @@ fi
 wp config set DB_NAME maria --allow-root --path='/var/www/html'
 wp config set DB_USER aa --allow-root --path='/var/www/html'
 wp config set DB_PASSWORD aa --allow-root --path='/var/www/html'
-wp config set DB_HOST mariadb --allow-root --path='/var/www/html'
+wp config set DB_HOST mariadb:3306 --allow-root --path='/var/www/html'
 # wp config set WP_DEBUG true --allow-root --path='/var/www/html'
 
 # sed -i '23 s/database_name_here/maria/' /var/www/html/wp-config.php

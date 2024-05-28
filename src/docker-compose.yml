@@ -1,7 +1,6 @@
 # The version property is now purely informative. Docker Compose does not rely on this property to determine how to process the Compose file.
 # When you use the version property, Docker Compose will issue a warning indicating that it is obsolete and should not be used in new Compose files.
 version: "3.8"
-name: inceptionProject
 
 services:
     mariadb:
@@ -12,10 +11,9 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - /Users/ekenane/Desktop/volumeWpDatabase:/var/lib/mysql
+            - mariadb:/var/lib/mysql
         networks:
-            - inc
-        restart: on-failure
+            - inception
     wordpress:
         build:
             context: ./requirements/wordpress
@@ -26,10 +24,9 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - /Users/ekenane/Desktop/vol:/var/www/html
+            - wordpress:/var/www/html
         networks:
-            - inc
-        restart: on-failure
+            - inception
     nginx:
     # If a -service definition in your docker-compose.yml file uses the build attribute but does not specify an image attribute (i.e., it does not provide the name of an existing image from a registry), Docker Compose will not attempt to push the built image to a registry automatically.
     # Instead, Docker Compose will warn you about the missing image attribute. This warning serves as a reminder that the built image will not be pushed to a registry unless you explicitly specify where it should be pushed.
@@ -40,12 +37,25 @@ services:
             - wordpress
         container_name: nginx
         volumes:
-            - /Users/ekenane/Desktop/vol:/var/www/html
+            - wordpress:/var/www/html
         ports:
             - "443:443"
         networks:
-            - inc
-        restart: on-failure
+            - inception
 
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: '/home/ekenane/data/WordPressWebsiteFiles'
+      o: bind
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: '/home/ekenane/data/WordPressDatabase'
+      o: bind
 networks:
-    inc:
+  inception:
+    driver: bridge
