@@ -18,6 +18,18 @@ wp config set DB_HOST $WP_DB_HOST --allow-root --path=$WP_DIR
 # Create directory for sock-file
 mkdir -p /run/php
 
-wp core install --url=${WP_URL} --title="${WP_TITLE}" --admin_user=${WP_ADMIN_USERNAME} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL} --allow-root
+if ! wp core is-installed --allow-root; then
+    wp core install --url=${WP_URL} --title=${WP_TITLE} --admin_user=${WP_ADMIN_USERNAME} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL} --allow-root
+else
+    echo "WordPress is already installed."
+fi
+
+user_exists=$(wp user list --role=${WP_USER_ROLE} --field=user_login --allow-root | grep ${WP_USER_FIRSTNAME})
+
+if [ -z "$user_exists" ]; then
+    wp user create ${WP_USER_FIRSTNAME} ${WP_ADMIN_EMAIL} --role=${WP_USER_ROLE} --user_pass=${WP_USER_PASSWORD} --display_name=${WP_USER_FIRSTNAME} --user_nicename=${WP_USER_FIRSTNAME} --nickname=${WP_USER_FIRSTNAME} --first_name=${WP_USER_FIRSTNAME} --last_name=${WP_USER_LASTNAME}  --allow-root
+else
+    echo "User with nickname "${WP_USER_FIRSTNAME}" already exists."
+fi
 
 /usr/sbin/php-fpm7.4 -F
