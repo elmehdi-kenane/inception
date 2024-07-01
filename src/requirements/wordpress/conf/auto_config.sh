@@ -27,7 +27,7 @@ fi
 user_exists=$(wp user list --role=${WP_USER_ROLE} --field=user_login --allow-root | grep ${WP_USER_FIRSTNAME})
 
 if [ -z "$user_exists" ]; then
-    wp user create ${WP_USER_FIRSTNAME} ${WP_ADMIN_EMAIL} --role=${WP_USER_ROLE} --user_pass=${WP_USER_PASSWORD} --display_name=${WP_USER_FIRSTNAME} --user_nicename=${WP_USER_FIRSTNAME} --nickname=${WP_USER_FIRSTNAME} --first_name=${WP_USER_FIRSTNAME} --last_name=${WP_USER_LASTNAME}  --allow-root
+    wp user create ${WP_USER_FIRSTNAME} ${WP_USER_EMAIL} --role=${WP_USER_ROLE} --user_pass=${WP_USER_PASSWORD} --display_name=${WP_USER_FIRSTNAME} --user_nicename=${WP_USER_FIRSTNAME} --nickname=${WP_USER_FIRSTNAME} --first_name=${WP_USER_FIRSTNAME} --last_name=${WP_USER_LASTNAME}  --allow-root
 else
     echo "User with nickname "${WP_USER_FIRSTNAME}" already exists."
 fi
