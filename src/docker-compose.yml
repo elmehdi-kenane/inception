@@ -57,13 +57,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: '/Users/ekenane/Desktop/inceptionvm/src/vols/vol-wpf'
+      device: '/home/ekenane/data/vol-wpf'
       o: bind
   mariadb:
     driver: local
     driver_opts:
       type: none
-      device: '/Users/ekenane/Desktop/inceptionvm/src/vols/vol-wpdb'
+      device: '/home/ekenane/data/vol-wpdb'
       o: bind
 
 networks:

@@ -1,6 +1,6 @@
 COMPOSE_FILE_PATH=./src/docker-compose.yml
-VOL_WPDB_PATH=src/vols/vol-wpdb/*
-VOL_WPF_PATH=src/vols/vol-wpf/*
+VOL_WPDB_PATH=/home/ekenane/data/vol-wpdb/*
+VOL_WPF_PATH=/home/ekenane/data/vol-wpf/*
 
 all:
 	docker-compose -f ${COMPOSE_FILE_PATH} up --build
@@ -16,6 +16,6 @@ rmvol: clean
 	fi
 
 clearvol:
-	rm -rf ${VOL_WPDB_PATH} && rm -rf ${VOL_WPF_PATH}
+	sudo rm -rf ${VOL_WPDB_PATH} && sudo rm -rf ${VOL_WPF_PATH}
 
 clearall: rmvol clearvol
