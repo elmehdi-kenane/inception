@@ -1,5 +1,3 @@
-# The version property is now purely informative. Docker Compose does not rely on this property to determine how to process the Compose file.
-# When you use the version property, Docker Compose will issue a warning indicating that it is obsolete and should not be used in new Compose files.
 version: "3.8"
 
 services:
@@ -30,8 +28,6 @@ services:
         env_file:
             - .env
     nginx:
-    # If a -service definition in your docker-compose.yml file uses the build attribute but does not specify an image attribute (i.e., it does not provide the name of an existing image from a registry), Docker Compose will not attempt to push the built image to a registry automatically.
-    # Instead, Docker Compose will warn you about the missing image attribute. This warning serves as a reminder that the built image will not be pushed to a registry unless you explicitly specify where it should be pushed.
         build:
             context: ./requirements/nginx
             dockerfile: Dockerfile
