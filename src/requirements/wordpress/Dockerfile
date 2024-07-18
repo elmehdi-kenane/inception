@@ -3,6 +3,7 @@ FROM debian:bullseye
 RUN apt update -y && \
     apt upgrade -y && \
     apt-get install -y wget && \
+    apt-get install -y sendmail && \
     apt-get install -y php && \
 	apt-get install -y php-fpm && \
 	apt-get install -y php-mysql && \
