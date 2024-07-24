@@ -16,6 +16,6 @@ rmvol: clean
 	fi
 
 clearvol:
-	rm -rf ${VOL_WPDB_PATH} && rm -rf ${VOL_WPF_PATH}
+	sudo rm -rf ${VOL_WPDB_PATH} && sudo rm -rf ${VOL_WPF_PATH}
 
 clearall: rmvol clearvol
