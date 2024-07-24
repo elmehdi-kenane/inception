@@ -5,10 +5,10 @@ VOL_WPF_PATH=/home/ekenane/data/vol-wpf/*
 all:
 	docker-compose -f ${COMPOSE_FILE_PATH} up --build
 
-clean:
+down:
 	docker-compose -f ${COMPOSE_FILE_PATH} down --rmi all
 
-rmvol: clean
+rmvol: down
 	@if [ "$$(docker volume ls -q)" ]; then \
 		docker volume rm $$(docker volume ls -q); \
 	else \
@@ -19,3 +19,5 @@ clearvol:
 	sudo rm -rf ${VOL_WPDB_PATH} && sudo rm -rf ${VOL_WPF_PATH}
 
 clearall: rmvol clearvol
+
+re:	down all
