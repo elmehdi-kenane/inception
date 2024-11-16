@@ -131,17 +131,6 @@ Here's a merged version of your instructions, combining the steps to set up the 
 - **Database Volume**: Ensures MariaDB data persists across container restarts.
 - **Website Files Volume**: Stores all WordPress-related files.
 
----
-
-## 📜 Makefile Commands
-
-| Command     | Description                              |
-|-------------|------------------------------------------|
-| `make`      | Builds and starts the project.           |
-| `make clean`| Removes all built objects.               |
-| `make fclean`| Stops containers and removes images.    |
-| `make re`   | Rebuilds the entire project from scratch.|
-
 ## Additional Resources 📖
 For detailed Q&A and notes about Docker, check out my [Docker Q&A and Notes](./DOCKER_NOTES.md) 🐳.
 
