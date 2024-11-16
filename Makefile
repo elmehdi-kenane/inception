@@ -8,7 +8,7 @@ all:
 down:
 	docker-compose -f ${COMPOSE_FILE_PATH} down --rmi all
 
-rmvol: down
+rmvol:
 	@if [ "$$(docker volume ls -q)" ]; then \
 		docker volume rm $$(docker volume ls -q); \
 	else \

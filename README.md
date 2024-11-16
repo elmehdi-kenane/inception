@@ -60,23 +60,45 @@ Here's a merged version of your instructions, combining the steps to set up the 
    3. **Edit the `.env` file**  
      Open the `.env` file in a text editor and fill in the required values.
 
-3. **Build and run the infrastructure using the Makefile**  
-   Navigate to the project directory and use the `make` command to build and start the project:
-   ```bash
-   make
-   ```
+3. **Build and run the infrastructure using the Makefile | Makefile Overview**  
 
-4. Access the services:
-   - **NGINX**: [https://localhost](https://localhost)  
-   - **WordPress**: Automatically set up and available via NGINX.  
-   - **MariaDB**: Pre-configured and ready for database operations.
+    1. **Build the infrastructure:**
 
-5. To stop and clean up containers:
-   ```bash
-   make fclean
-   ```
+        Use the `make` or `make all` command to build and start the project:
+       ```bash
+       make
+       ```
+       This command will:
+       - Build the Docker images as defined in `docker-compose.yml` file.
+       - Start the containers.
+    2. **Stop and clean up containers:**
+       To stop the running containers and remove the associated images:
+       ```bash
+       make down
+       ```
+    3. **Remove all Docker volumes:**
+       This command will remove any Docker volumes that are currently in use, ensuring that no residual data remains:
+       ```bash
+       make rmvol
+       ```
+    4. **clear the WordPress/MariaDb directories:**
+       If you want to remove the local volume directories used for WordPress data and databases, use the following:
+       ```bash
+       make clearvol
+       ```
 
----
+    7. **Remove all volumes and clear the directories:**
+       To remove both Docker volumes and the specific WordPress/MariaDb directories:
+       ```bash
+       make clearall
+       ```
+
+    8. **Rebuild and restart the infrastructure:**
+       If you need to rebuild the infrastructure and restart the containers:
+       ```bash
+       make re
+       ```
+       This command is a shortcut for running `make down` followed by `make all`.
 
 ## ⚙️ Services and Configuration
 
